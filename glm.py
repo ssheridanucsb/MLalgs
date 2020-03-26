@@ -27,7 +27,7 @@ class LinReg:
 
     def Predict(self, x):
         """predictes Y values by using the inputed x values and coefficients"""
-        return self.betaHat @ self.designMatrix(x)
+        return  self.designMatrix(x) @ self.betaHat 
 
 
 class LogReg:
@@ -54,7 +54,7 @@ class LogReg:
         self.logOdds = etaHat
         self.probs = self.inverseLogit(etaHat)
     
-    def Predict(self, x, t):
+    def Predict(self, x, t=1):
         X = self.designMatrix(x)
         etaHat = X @ self.betaHat
         if(t==0):
