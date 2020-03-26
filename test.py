@@ -6,5 +6,5 @@ X, y = datasets.load_diabetes(return_X_y=True)
 
 lin = LinReg()
 lin.Train(y, X)
-print(lin.mse())
+
 
