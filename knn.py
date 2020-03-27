@@ -1,5 +1,4 @@
 import numpy as np 
-from scipy.stats import mode
 
 class Knn:
     """Takes vecotr Y of labels and vector X of predictors"""
@@ -18,10 +17,10 @@ class Knn:
         Ypred = np.zeros(predrows)
 
         for i in range(predrows):
-            vector = X[i:]
+            vector = X[i,]
             distances = np.array([self.distance(vector, self.x[j,:]) for j in range(trainrows)])
-            index = np.argsort(distances)[0:K]
-            Ypred[i] = mode(y[index])[0]
+            index = np.argsort(distances)[0:self.K]
+            Ypred[i] = np.bincount(self.y[index]).argmax()
         
         return Ypred 
 
